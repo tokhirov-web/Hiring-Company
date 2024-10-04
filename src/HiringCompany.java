@@ -18,41 +18,6 @@ public class HiringCompany
         }
     }
 
-    static void licenseCheck(String company, boolean license) {
-        if (license == true) {
-            System.out.println("\n" + company + " has got a license");
-        } else {
-            System.out.println("\n" + company + " does not have a license");
-        }
-    }
-
-    public static void empEvaluation(int age, float gpa) {
-        if (gpa >= 3f) {
-            if (age >= 23) {
-                System.out.println("\nThe employee is eligible for consideration");
-            } else {
-                System.out.println("\nThe employee is not eligible for consideration. Too young");
-            }
-        } else {
-            System.out.println("\nThe employee is not eligible for consideration. Low GPA");
-        }
-    }
-
-
-
-    void profitability(String company, float revenue, float expenses) {
-        if (revenue > expenses) {
-            System.out.println(company + " is profitable");
-        } else if (revenue == expenses) {
-            System.out.println(company + " is stable");
-        } else if (revenue < expenses) {
-            System.out.println(company + " is losing it's money");
-        }
-    }
-
-    //Test
-
-
     public static int jobListing(String[] arr, int length) {
 
         if (length == 0) {
@@ -64,14 +29,11 @@ public class HiringCompany
         return jobListing(arr, length - 1);
     }
 
-
-
     public static void addEmpToDB(String name, String[] arr, int freeSpace) {
         arr[freeSpace] = name;
         System.out.println("\nThe name was added");
 
     }
-
 
     public static void printEmpCompDB(String[][] arr, String[] arr1) {
 
@@ -100,8 +62,6 @@ public class HiringCompany
         }
     }
 
-
-
     public static String[][] addCompaniesToDB(String[][] arr, int freeRow, int freeColumn1, int freeColumn2,
                                               String companyName,
                                               String companyIndustry) {
@@ -112,69 +72,29 @@ public class HiringCompany
 
     public static void main(String[] args) {
 
+        Companies.Info compInfoObj = new Companies.Info();
+        Employees.Info empInfoObj = new Employees.Info();
+        Companies.Register compRegInfo = new Companies.Register();
+
+
+
         byte partnersNum = 4;
         byte numOfBranches = 3;
         String branchOneName = "Nuke";
         String branchTwoName = "Inferno";
         String branchThreeName = "Mirage";
-        boolean avanguardIsActive = true;
-        boolean siriusIsActive = false;
+        boolean nukeIsActive = true;
+        boolean infernoIsActive = false;
         boolean mirageIsActive = false;
         byte numOfWorkers = 67;
 
         float companyExpenses = 3462.78f;
         boolean salaryIsGiven = false;
 
-
         float givenSalary = 0f;
-
 
         byte jobsNum = 5;
         byte jobSeekersNum = 3;
-
-        String empOneName = "Michael Jefferson";
-        String empOneProfession = "Electrical Engineer";
-        byte employeeOneId = 9;
-        byte employeeOneAge = 28;
-        final boolean hasDegree1 = true;
-        byte experienceYears1 = 3;
-        final float employeeOneGpa = 3.4f;
-        byte contractDaysLeft1 = 31;
-
-
-
-        String companyOneName = "Saneg LLC";
-        final short companyOneEstYear = 2004;
-        float companyOneRevenue = 3440001.45f;
-        short avgSalary1 = 3000;
-        final boolean licenesed1 = true;
-        String industry1 = "Engineering";
-
-
-        // Employer two
-        String companyTwoName = "Apple Inc.";
-        final short companyTwoEstYear = 1978;
-        float companyTwoRevenue = 34400045561.45f;
-        short avgSalary2 = 5000;
-        final boolean licenesed2 = true;
-        String industry2 = "IT";
-
-        // Employer three
-        String companyThreeName = "Google Inc.";
-        final short companyThreeEstYear = 1998;
-        float companyThreeRevenue = 3440456561.45f;
-        short avgSalary3 = 4000;
-        final boolean licenesed3 = true;
-        String industry3 = "IT";
-
-        // Employer four
-        String companyFourName = "FaceBook Inc.";
-        final short companyFourEstYear = 2005;
-        float companyFourRevenue = 343234561.45f;
-        float companyFourExpenses = 34234252.454f;
-        short avgSalary4 = 3000;
-        final boolean licenesed4 = true;
-        String industry4 = "IT";
 
         byte monthDay = 0;
 
@@ -195,17 +115,17 @@ public class HiringCompany
                 "Project Manager"};
 
         String[][] companiesDataBase = new String[20][2];
-        companiesDataBase[0][0] = companyOneName;
-        companiesDataBase[0][1] = industry1;
+        companiesDataBase[0][0] = compInfoObj.companyOneName;
+        companiesDataBase[0][1] = compInfoObj.industry1;
 
-        companiesDataBase[1][0] = companyTwoName;
-        companiesDataBase[1][1] = industry2;
+        companiesDataBase[1][0] = compInfoObj.companyTwoName;
+        companiesDataBase[1][1] = compInfoObj.industry2;
 
-        companiesDataBase[2][0] = companyThreeName;
-        companiesDataBase[2][1] = industry3;
+        companiesDataBase[2][0] = compInfoObj.companyThreeName;
+        companiesDataBase[2][1] = compInfoObj.industry3;
 
-        companiesDataBase[3][0] = companyFourName;
-        companiesDataBase[3][1] = industry4;
+        companiesDataBase[3][0] = compInfoObj.companyFourName;
+        companiesDataBase[3][1] = compInfoObj.industry4;
 
 
         String[][] potentialCompsDB = {
@@ -216,17 +136,16 @@ public class HiringCompany
         };
 
 
-
-        HiringCompany ap = new HiringCompany();
-        ap.profitability(companyFourName, companyFourRevenue, companyFourExpenses);
+        compInfoObj.profitability(compInfoObj.companyFourName, compInfoObj.companyFourRevenue,
+                compInfoObj.companyFourExpenses);
 
         addEmpToDB("Name", jobSeekersDataBase, 3);
 
-        licenseCheck(companyFourName, licenesed4);
+        compInfoObj.licenseCheck(compInfoObj.companyFourName, compInfoObj.licenesed4);
 
-        hasDegree(empOneName, hasDegree1);
+        hasDegree(empInfoObj.empOneName, empInfoObj.hasDegree1);
 
-        empEvaluation(employeeOneAge, employeeOneGpa);
+        empInfoObj.empEvaluation(empInfoObj.employeeOneAge, empInfoObj.employeeOneGpa);
 
         addCompaniesToDB(companiesDataBase, 4, 0, 1, "Blablabla",
                 "muffins");
@@ -261,21 +180,6 @@ public class HiringCompany
 
         System.out.println();
 
-        switch (empOneProfession) {
-            case "Electrical Engineer":
-                System.out.println("The employee can work in " + companyOneName);
-
-                break;
-
-            case "Software Engineer":
-                System.out.println("The employee can work in " + companyTwoName);
-
-                break;
-            default:
-                System.out.println("No available jobs for the employee");
-
-                break;
-        }
 
         System.out.println();
 
@@ -284,7 +188,7 @@ public class HiringCompany
             if (monthDay == 30 || monthDay == 31)
             {
                 givenSalary = (revenue - companyExpenses) / numOfWorkers;
-                System.out.println("\nAll workers have recieved their salary\n");
+                System.out.println("\nAll workers have received their salary\n");
                 System.out.println("The average salary according to the company's revenue is : " + givenSalary + "\n");
                 salaryIsGiven = true;
             }
@@ -296,13 +200,7 @@ public class HiringCompany
 
         System.out.println();
 
-        while (contractDaysLeft1 > 0) {
-            System.out.println(empOneName + " has " + contractDaysLeft1 + " days of the contract left");
-            System.out.println();
-            contractDaysLeft1--;
-        }
-
-        System.out.println("Pontential employers:");
+        System.out.println("Potential employers:");
 
         do {
             System.out.print(potentialComps[counterForPotentialComps] + " ");
